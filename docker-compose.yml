@@ -1,0 +1,52 @@
+version: "3.3"
+services:
+  minio:
+    image: minio/minio:RELEASE.2023-04-13T03-08-07Z
+    container_name: minio-storage-container
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - ./buckets:/data
+    environment:
+      MINIO_ROOT_USER: root
+      MINIO_ROOT_PASSWORD: root@password
+      MINIO_ADDRESS: ":9000"
+      MINIO_CONSOLE_ADDRESS: ":9001"
+    command: server /data
+  spark-master:
+    build: .
+    image: spark-generic
+    container_name: spark-master-container
+    ports:
+      - "4040:4040"
+      - "6066:6066"
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./spark-defaults.conf
+        target: /opt/spark/conf/spark-defaults.conf
+        read_only: true
+  spark-worker-1:
+    image: spark-generic
+    container_name: spark-worker-1-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKLOAD=worker
+  spark-worker-2:
+    image: spark-generic
+    container_name: spark-worker-2-container
+    ports:
+      - "8082:8081"
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKLOAD=worker

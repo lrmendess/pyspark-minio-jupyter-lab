@@ -1,0 +1,6 @@
+**/.venv
+**/__pycache__
+
+.samples/
+spark-submit.sh
+buckets/
