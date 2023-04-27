@@ -2,6 +2,7 @@
 
 if [ "${SPARK_WORKLOAD}" == "master" ];
 then
+    nohup jupyter lab --ip 0.0.0.0 --port ${JUPYTERLAB_PORT} --notebook-dir ${JUPYTERLAB_WORKSPACE} --allow-root --no-browser >> ${JUPYTERLAB_LOG} & echo $!> ${JUPYTERLAB_PID}
     spark-class org.apache.spark.deploy.master.Master --ip ${SPARK_MASTER_HOST} --port ${SPARK_MASTER_PORT} --webui-port ${SPARK_MASTER_WEBUI_PORT} >> ${SPARK_MASTER_LOG}
 elif [ "${SPARK_WORKLOAD}" == "worker" ];
 then
