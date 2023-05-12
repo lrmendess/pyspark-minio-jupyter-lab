@@ -61,6 +61,9 @@ RUN mkdir -p ${JUPYTERLAB_LOG_DIR} && \
     touch ${JUPYTERLAB_LOG} && \
     ln -sf /dev/stdout ${JUPYTERLAB_LOG}
 
+# Ignore WARN MetricsConfig
+RUN touch ${SPARK_HOME}/conf/hadoop-metrics2-s3a-file-system.properties
+
 # Start master or worker
 COPY --chmod=0755 start-spark.sh .
 
