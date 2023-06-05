@@ -1,11 +1,11 @@
-IMAGE=spark-generic
-CONTAINER=spark-master-container
-
-all:
-	docker compose up -d
+IMAGE:=spark-generic
+CONTAINER:=spark-master-container
 
 build:
 	docker build -t $(IMAGE) .
+
+start:
+	docker compose up -d
 
 stop:
 	docker compose down --remove-orphans
@@ -16,4 +16,4 @@ bash:
 token:
 	@echo $(shell docker exec -it $(CONTAINER) jupyter lab list | grep -oP "(?<=token=).*(?=::)")
 
-renew: stop build all
+all: stop build start
