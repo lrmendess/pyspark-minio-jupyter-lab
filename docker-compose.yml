@@ -36,7 +36,7 @@ services:
       - spark-master
     environment:
       - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_MEMORY=2G
       - SPARK_WORKLOAD=worker
   spark-worker-2:
     image: spark-generic
@@ -47,5 +47,5 @@ services:
       - spark-master
     environment:
       - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
+      - SPARK_WORKER_MEMORY=2G
       - SPARK_WORKLOAD=worker
