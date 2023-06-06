@@ -3,4 +3,5 @@
 **/.ipynb_checkpoints
 
 buckets/
-workspace/
+workspace/**/*
+!workspace/sample.ipynb
