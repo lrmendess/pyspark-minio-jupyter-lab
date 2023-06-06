@@ -35,7 +35,7 @@ To stop all containers, type `make stop` in the terminal and wait for them all t
 ### Example using Jupyter, PySpark and MinIO
 An example using PySpark and MinIO through Jupyter is available at [workspace/sample.ipynb](workspace/sample.ipynb).
 
-## Volumes
+## :package: Volumes
 When running the containers at first time, a `workspace/` directory will be created at the root of the project. This folder is shared between host machine and jupyter workspace running inside the container. The `buckets/` directory is where MinIO persists data generated.
 
 This approach guarantees us that even if a container is restarted, the codes and data created will continue to be saved.
