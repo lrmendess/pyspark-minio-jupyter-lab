@@ -1,7 +1,7 @@
 # :whale: PySpark + MinIO + Jupyter
 This project consists of running a basic and dockerized data engineering development and learning environment using a set of tools:
 - PySpark (3.3.2)
-- MinIO :flamingo:
+- MinIO (AGPL v3) :flamingo:
 - Jupyter Lab
 
 > The only purpose of this project is learning, so never use this for production.
@@ -9,8 +9,8 @@ This project consists of running a basic and dockerized data engineering develop
 ## :rocket: How to Execute
 To execute this project, a linux OS (including WSL) is required.
 
-### Build and execute the containers
-To instantiate the environment, type `make` and press enter at Linux terminal.
+### Build and start containers
+First, you need to build a docker image by typing `make build`. After that, type `make start` every time you want to start the service.
 
 ### Using Jupyter
 After the build and start process terminated, type `make token` and copy the result.
@@ -29,5 +29,13 @@ Access [http://localhost:8080](http://localhost:8080) to inspect PySpark applica
 
 To inspect the running stages, you can access [http://localhost:4040](http://localhost:4040) during execution.
 
+### Stop containers
+To stop all containers, type `make stop` in the terminal and wait for them all to be brought down.
+
 ### Example using Jupyter, PySpark and MinIO
 An example using PySpark and MinIO through Jupyter is available at [workspace/sample.ipynb](workspace/sample.ipynb).
+
+## Volumes
+When running the containers at first time, a `workspace/` directory will be created at the root of the project. This folder is shared between host machine and jupyter workspace running inside the container. The `buckets/` directory is where MinIO persists data generated.
+
+This approach guarantees us that even if a container is restarted, the codes and data created will continue to be saved.
