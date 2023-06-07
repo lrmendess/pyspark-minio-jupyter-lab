@@ -24,7 +24,7 @@ Access [http://localhost:9000](http://localhost:9000) and sign-in using these cr
 
 Now you can create your own buckets to save and manipulete files like a AWS S3 :wine_glass:.
 
-### Inspecting PySpark UI
+### Accessing Spark Web UI
 Access [http://localhost:8080](http://localhost:8080) to inspect PySpark applications and workers (by default, the `docker-compose.yml` is configured to run 2 PySpark workers with 1 vCore and 2GB of memory each).
 
 To inspect the running stages, you can access [http://localhost:4040](http://localhost:4040) during execution.
