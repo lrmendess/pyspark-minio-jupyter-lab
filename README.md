@@ -7,7 +7,7 @@ This project consists of running a basic and dockerized data engineering develop
 > The only purpose of this project is learning, so never use this for production.
 
 ## :rocket: How to Execute
-To execute this project, a linux OS (including WSL) is required.
+To execute this project, a linux OS (including WSL) and a docker compose v2 are required.
 
 ### Build and start containers
 First, you need to build a docker image by typing `make build`. After that, type `make start` every time you want to start the service.
